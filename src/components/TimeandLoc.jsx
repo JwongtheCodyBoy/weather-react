@@ -1,11 +1,12 @@
 import React from "react";
 
-function TimeandLoc() {
+const TimeandLoc = ({ weather: { formattedLocalTime, name, country } }) => {
   return (
     <div>
       <div className="flex items-center justify-center my-6">
         <p className="text-white text-xl font-extralight">
           Weekday, Date | Local time TIME
+          {formattedLocalTime}
         </p>
       </div>
 
@@ -14,6 +15,8 @@ function TimeandLoc() {
       </div>
     </div>
   );
-}
+};
 
 export default TimeandLoc;
+
+
