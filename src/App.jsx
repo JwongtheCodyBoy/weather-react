@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import React from "react";
 import Topbuttons from "./components/Topbuttons.jsx";
 import SearchBar from "./components/SearchBar.jsx";
@@ -12,17 +13,15 @@ const App = () => {
   const [weather, setWeather] = useState(null);
 
   const getWeather = async () => {
-    await getFormattedWeatherData({ q: "tampa" }).then((data) => {
+    await getFormattedWeatherData({ q: "Tampa" }).then((data) => {
       setWeather(data);
+      console.log(data);
     });
-    console.log(data);
   };
 
   useEffect(() => {
     getWeather();
   }, [query, units]);
-
-  getWeather();
 
   return (
     <div className="mx-auto max-w-screen-lg mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to to-blue-700 h-fit shadow-xl shadow-gray-400 text-white">
