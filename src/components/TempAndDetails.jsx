@@ -3,27 +3,42 @@ import { BiSolidDropletHalf } from "react-icons/bi";
 import { FaThermometerEmpty } from "react-icons/fa";
 import { FiWind } from "react-icons/fi";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { SiSunrise } from "react-icons/si";
 import { TbSunrise, TbSunset } from "react-icons/tb";
 
-function TempAndDetails() {
+const TempAndDetails = ({
+  weather: {
+    details,
+    icon,
+    temp,
+    temp_min,
+    temp_max,
+    sunrise,
+    sunset,
+    speed,
+    humidity,
+    feels_like,
+  },
+  units,
+}) => {
   const weatherDetails = [
     {
       id: 1,
       Icon: FaThermometerEmpty,
       title: "Feels like",
-      value: "Temp°",
+      value: `${feels_like.toFixed()}°`,
     },
     {
       id: 2,
       Icon: BiSolidDropletHalf,
       title: "Humidity",
-      value: "Hum%",
+      value: `${humidity}%`,
     },
     {
       id: 3,
       Icon: FiWind,
       title: "Wind speed",
-      value: "Wind km",
+      value: `${speed} ${units === "metric" ? "km/h" : "mph"}`,
     },
   ];
 
@@ -32,41 +47,41 @@ function TempAndDetails() {
       id: 1,
       Icon: TbSunrise,
       title: "Sunrise",
-      value: "Time AM",
+      value: `${sunrise}`,
     },
     {
       id: 2,
       Icon: TbSunset,
       title: "Sunset",
-      value: "Time PM",
+      value: `${sunset}`,
     },
     {
       id: 3,
       Icon: MdKeyboardArrowUp,
       title: "High",
-      value: "Temp°",
+      value: `${temp_max.toFixed()}°`,
     },
     {
       id: 4,
       Icon: MdKeyboardArrowDown,
       title: "Low",
-      value: "Temp°",
+      value: `${temp_min.toFixed()}°`,
     },
   ];
 
   return (
     <div className="text-white text-xl">
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p> WEATHER </p>
+        <p> {details} </p>
       </div>
 
       <div className="flex flex-row items-center justify-between py-3">
         <img
-          src="https://openweathermap.org/img/wn/10d@2x.png" //Icon, need to make variable here
+          src={icon} //Icon, need to make variable here
           alt="weather icon"
           className="w-20"
         />
-        <p className="text-5xl">TEMP°</p>
+        <p className="text-5xl">{`${temp.toFixed()}°`}</p>
 
         <div className="flex flex-col space-y-3 items-start">
           {
@@ -98,6 +113,6 @@ function TempAndDetails() {
       </div>
     </div>
   );
-}
+};
 
 export default TempAndDetails;

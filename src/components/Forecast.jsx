@@ -1,11 +1,10 @@
 import React from "react";
 
-function Forecast() {
-  const weathers = [1, 2, 3, 4, 5];
+const Forecast = ({ title, data }) => {
   return (
     <div>
       <div className="flex items-center justify-start mt-6">
-        <p className="font-medium uppercase">3 hour forecast</p>
+        <p className="font-medium uppercase">{title}</p>
       </div>
 
       <hr
@@ -17,23 +16,19 @@ function Forecast() {
       />
 
       <div className="flex items-center justify-between">
-        {weathers.map((data, index) => (
+        {data.map((d, index) => (
           <div
             key={index}
             className="flex flex-col items-center justify-center"
           >
-            <p className="font-light text-sm">Weekday</p>
-            <img
-              src="https://openweathermap.org/img/wn/10d@2x.png"
-              alt="weather"
-              className="w-12 my-1"
-            />
-            <p className="font-medium">Temp</p>
+            <p className="font-light text-sm">{d.title}</p>
+            <img src={d.icon} alt="weather" className="w-12 my-1" />
+            <p className="font-medium">{`${d.temp.toFixed()}°`}</p>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default Forecast;
