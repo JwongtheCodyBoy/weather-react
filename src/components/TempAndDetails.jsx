@@ -8,7 +8,7 @@ import { TbSunrise, TbSunset } from "react-icons/tb";
 
 const TempAndDetails = ({
   weather: {
-    details,
+    condition,
     icon,
     temp,
     temp_min,
@@ -72,7 +72,7 @@ const TempAndDetails = ({
   return (
     <div className="text-white text-xl">
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p> {details} </p>
+        <p> {condition} </p>
       </div>
 
       <div className="flex flex-row items-center justify-between py-3">
@@ -85,7 +85,7 @@ const TempAndDetails = ({
 
         <div className="flex flex-col space-y-3 items-start">
           {
-            //prettier ignore
+            // prettier ignore
             weatherDetails.map(({ id, Icon, title, value }) => (
               <div
                 key={id}
@@ -101,7 +101,7 @@ const TempAndDetails = ({
 
       <div className="flex flex-row flex-wrap items-center justify-center text-base py-3">
         {
-          //prettier ignore
+          // prettier ignore
           todayDetails.map(({ id, Icon, title, value }) => (
             <div key={id} className="flex flex-row items-center text-sm mx-7">
               <Icon size={30} />

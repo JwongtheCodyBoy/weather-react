@@ -57,7 +57,7 @@ const formatCurrent = (data) => {
     timezone,
   } = data;
 
-  const { main: details, icon } = weather[0];
+  const { main: condition, icon } = weather[0];
   const formattedLocalTime = formatToLocalTime(dt, timezone);
 
   return {
@@ -72,8 +72,10 @@ const formatCurrent = (data) => {
     country,
     sunrise: formatToLocalTime(sunrise, timezone, "hh:mm a"),
     sunset: formatToLocalTime(sunset, timezone, "hh:mm a"),
+    rawSunrise: sunrise,
+    rawSunSet: sunset,
     speed,
-    details,
+    condition,
     icon: iconURL(icon),
     formattedLocalTime,
     dt,
