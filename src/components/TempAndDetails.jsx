@@ -69,6 +69,15 @@ const TempAndDetails = ({
     },
   ];
 
+  const SunShadow = (icon, temp, units) => {
+    const threshold = units === "metric" ? 30 : 85;
+
+    if (icon === "https://openweathermap.org/img/wn/01d@2x.png") {
+      if (temp >= threshold) return "drop-shadow-blazing";
+      return "drop-shadow-sunny";
+    } else return "box-shadow: none";
+  };
+
   return (
     <div className="text-white text-xl">
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
@@ -79,7 +88,7 @@ const TempAndDetails = ({
         <img
           src={icon} //Icon, need to make variable here
           alt="weather icon"
-          className="w-20"
+          className={`w-20 ${SunShadow(icon, temp, units)}`}
         />
         <p className="text-5xl">{`${temp.toFixed()}°`}</p>
 
